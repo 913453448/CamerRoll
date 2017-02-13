@@ -76,7 +76,6 @@ public class SurLoadingView extends SurfaceView implements SurfaceHolder.Callbac
         mHolder.addCallback(this);
         //this.setEGLConfigChooser(8, 8, 8, 8, 16, 0);
         setZOrderOnTop(true);
-
         getHolder().setFormat(PixelFormat.TRANSLUCENT);
 
         reachPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);

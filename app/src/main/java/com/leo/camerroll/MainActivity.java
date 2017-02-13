@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.leo.camerroll.camera.CameraRollManager;
+import com.leo.camerroll.camera.LoaddingView;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -33,14 +34,14 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
     private static final String IMAGE_URL = "http://b.hiphotos.baidu.com/image/h%3D200/sign=990764739ccad1c8cfbbfb274f3f67c4/5bafa40f4bfbfbed022d422371f0f736afc31f71.jpg";
     private ImageView mImageView;
-    private LoadingView mLoadingView;
+    private LoaddingView mLoadingView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mImageView = (ImageView) findViewById(R.id.id_image);
-        mLoadingView = (LoadingView) findViewById(R.id.id_loading);
+        mLoadingView = (LoaddingView) findViewById(R.id.id_loading);
         mImageView.setOnLongClickListener(new View.OnLongClickListener(){
             @Override
             public boolean onLongClick(View v) {
@@ -167,14 +168,14 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onProgressUpdate(Long... values) {
-            mLoadingView.setProgress((int) ((values[0].longValue() * 1.0f / contentLength) * 100));
+            mLoadingView.setProgress((int) ((values[0].longValue() * 1.0f / contentLength)));
         }
 
         @Override
         protected void onPostExecute(Bitmap bitmap) {
             if (imageView != null && bitmap != null) {
                 imageView.setImageBitmap(bitmap);
-                mLoadingView.loadCompleted();
+                mLoadingView.loadComplete();
             }
         }
     }

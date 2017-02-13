@@ -1,62 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.leo.camerroll.MainActivity">
 
-    <LinearLayout
-        android:id="@+id/activity_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context="com.leo.camerroll.MainActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="长按保存图片至相册" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="长按保存图片至相册" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/id_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="#b2000000" />
 
-            <ImageView
-                android:id="@+id/id_image"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="#efefef" />
-
-            <com.leo.camerroll.LoadingView
-                android:id="@+id/id_loading"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center" />
-        </FrameLayout>
-        <com.leo.camerroll.LoadingView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+        <com.leo.camerroll.camera.LoaddingView
+            android:id="@+id/id_loading"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center" />
-        <com.leo.camerroll.LoadingView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="20dp"
-            app:load_range="0.618"
-            app:reached_color="#ff00"
-            app:unreadch_color="#00ff00" />
+    </FrameLayout>
 
-        <com.leo.camerroll.LoadingView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="20dp"
-            app:load_range="0.618"
-            app:reached_color="#ff00"
-            app:unreadch_color="#00ff00"
-            app:text_color="#ff00ff"
-            />
-    </LinearLayout>
-</ScrollView>
+    <com.leo.camerroll.LoadingView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center" />
+
+    <com.leo.camerroll.LoadingView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        app:load_range="0.618"
+        app:reached_color="#ff00"
+        app:unreadch_color="#00ff00" />
+
+    <com.leo.camerroll.SurLoadingView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp" />
+</LinearLayout>
