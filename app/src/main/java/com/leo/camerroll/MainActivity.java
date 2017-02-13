@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -88,14 +89,14 @@ public class MainActivity extends AppCompatActivity {
             BufferedInputStream bis = null;
             ByteArrayOutputStream bos = null;
             try {
-                File fileDir=new File(getApplication().getExternalCacheDir(),"images");
-                if(fileDir==null||!fileDir.isDirectory()){
-                    fileDir.mkdir();
-                }
-                File file=new File(fileDir.getAbsolutePath()+"/"+params[0].hashCode()+".png");
-                if(file!=null&&file.length()>0){
-                    return bitmap=BitmapFactory.decodeFile(file.getAbsolutePath());
-                }
+//                File fileDir=new File(getApplication().getExternalCacheDir(),"images");
+//                if(fileDir==null||!fileDir.isDirectory()){
+//                    fileDir.mkdir();
+//                }
+//                File file=new File(fileDir.getAbsolutePath()+"/"+params[0].hashCode()+".png");
+//                if(file!=null&&file.length()>0){
+//                    return bitmap=BitmapFactory.decodeFile(file.getAbsolutePath());
+//                }
                 bos=new ByteArrayOutputStream();
                 byte[] buffer = new byte[512];
                 long total=0;
@@ -105,9 +106,9 @@ public class MainActivity extends AppCompatActivity {
                 this.contentLength = conn.getContentLength();
                 bis = new BufferedInputStream(conn.getInputStream());
                 while ((len = bis.read(buffer)) != -1) {
+                    SystemClock.sleep(200);
                     total+=len;
                     publishProgress(total);
-                    Thread.sleep(100);
                     bos.write(buffer, 0, len);
                     bos.flush();
                 }
@@ -168,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onProgressUpdate(Long... values) {
-            mLoadingView.setProgress((int) ((values[0].longValue() * 1.0f / contentLength)));
+            mLoadingView.setProgress(((values[0].longValue() * 1.0f / contentLength)));
         }
 
         @Override
